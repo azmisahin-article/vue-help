@@ -178,6 +178,7 @@ export default {
       request: "/request",
       volunteer: "/volunteer",
       participant: "/participant",
+      geolocation: "/geolocation"
     },
     // models
     // geolocation
@@ -256,6 +257,10 @@ export default {
         speed: position.coords.speed,
         timestamp: position.timestamp
       }
+
+      // create geolocation
+      this.geolocation = await this.create(`${this.a.geolocation}/create`, position)
+
       this.processL = true
       // process protection 
       setTimeout(() => {

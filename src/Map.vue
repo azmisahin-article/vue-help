@@ -59,7 +59,7 @@ export default {
             models.forEach((item) => {
                 let longitude = item.geolocation.longitude || 0.0
                 let latitude = item.geolocation.latitude || 0.0
-                this.center =[longitude, latitude]
+                this.center = [longitude, latitude]
                 var coord = [longitude, latitude]
                 this.data.geometry.coordinates[0].push(coord)
             })
@@ -75,7 +75,7 @@ export default {
         },
         async createMap() {
             let data = await this.getCoordinat()
-         
+
             // a feature (geospatial object) is created from the GeoJSON
             const feature = new GeoJSON().readFeature(data, {
                 // this is required since GeoJSON uses latitude/longitude,
