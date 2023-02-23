@@ -9,7 +9,7 @@
 import "bootstrap"
 
 // global define
-export const api = "https://nextjs-api-mongodb-six.vercel.app/api";
+export const api = process.env.ARCTICLE_API_URL || "https://nextjs-api-mongodb-six.vercel.app/api";
 let aborter;
 
 /**

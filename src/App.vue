@@ -174,7 +174,7 @@ export default {
     a: {
       city: "/city",
       need: "/need",
-      rvp: "/",
+      rvp: "",
       request: "/request",
       volunteer: "/volunteer",
       participant: "/participant",
