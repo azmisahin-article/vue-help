@@ -299,7 +299,7 @@ export default {
 
       // logic
       this.request.geolocation = this.geolocation
-      this.request = await this.create(this.a.request, this.request)
+      this.request = await this.create(`${this.a.request}/create`, this.request)
       // update main data
       this.rvps = await this.get(this.a.rvp);
     },
@@ -312,7 +312,7 @@ export default {
     async combineRequestAndVolunteer(participant) {
 
       // logic
-      this.participant = await this.create(this.a.participant, participant)
+      this.participant = await this.create(`${this.a.participant}/create`, participant)
 
     },
 
@@ -329,7 +329,7 @@ export default {
 
       // logic
       this.volunteer.geolocation = this.geolocation
-      this.volunteer = await this.create(this.a.volunteer, this.volunteer)
+      this.volunteer = await this.create(`${this.a.volunteer}/create`, this.volunteer)
       // add logic
       // whenever a volunteer responds to the request, they join.
       this.combineRequestAndVolunteer({ request_id: this.request._id, volunteer_id: this.volunteer._id })
