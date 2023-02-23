@@ -55,7 +55,7 @@
               </td>
               <td v-html="rvp.typeOfNeed"></td>
               <td v-html="rvp.calendar"></td>
-              <td v-html="rvp.geolocation.accuracy"></td>
+              <td v-html="mapLink(rvp.geolocation)"></td>
             </tr>
           </tbody>
         </table>
@@ -348,6 +348,9 @@ export default {
       // update main data
       this.rvps = await this.get(this.a.rvp);
 
+    },
+    mapLink(position) {
+      return `<a target="_blank" href="https://www.openstreetmap.org/note/new#map=17/${position.latitude}/${position.longitude}">Map</a>`
     }
   },
   // 
