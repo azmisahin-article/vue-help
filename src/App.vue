@@ -277,8 +277,8 @@ export default {
     async init() {
 
       // header
-      // this.cities = await get(this.a.city);
-      // this.needs = await get(this.a.need);
+      this.cities = await this.get(this.a.city);
+      this.needs = await this.get(this.a.need);
 
       // main
       this.rvps = await this.get(this.a.rvp);
@@ -341,7 +341,7 @@ export default {
   },
   // 
   created() {
-
+    this.init()
   }
 }
 </script>
