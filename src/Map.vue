@@ -1,31 +1,15 @@
 <template>
-    <div id="map" class="w-100" ref="map-root" style="width: max-content;">
+    <div id="map">
     </div>
 </template>
 
 <style>
 html,
-body {
+body,
+#app,
+#map {
     width: 100%;
     height: 100%;
-    margin: 0;
-}
-
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    height: 100%;
-    width: 100vh;
-    display: grid;
-    grid-template-columns: 100vh;
-    grid-auto-rows: 1fr;
-    grid-gap: 1rem;
-
-    box-sizing: border-box;
-
-    width: 100%;
-    height: 100%;
-    min-width: 100vh;
-    min-height: 80vh;
 }
 </style>
   
@@ -104,7 +88,7 @@ export default {
             // this is where we create the OpenLayers map
             new Map({
                 // the map will be created using the 'map-root' ref
-                target: this.$refs['map-root'],
+                target: 'map',
                 layers: [
                     // adding a background tiled layer
                     new TileLayer({
