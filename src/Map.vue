@@ -1,29 +1,19 @@
 <template>
-    <div class="w-100" ref="map-root" style="width: 100%; height: 100%">
+    <div id="map" class="w-100" ref="map-root">
     </div>
 </template>
 
 <style>
-html,
-body {
+#map {
+    width: 100%;
     height: 100%;
-    margin: 0;
-}
-
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    height: 100%;
-    width: 100vh;
-    display: grid;
-    grid-template-columns: 100vh;
-    grid-auto-rows: 1fr;
-    grid-gap: 1rem;
-
-    box-sizing: border-box;
+    min-width: 100vh;
+    min-height: 80vh;
 }
 </style>
   
 <script>
+
 import View from 'ol/View'
 import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
@@ -43,9 +33,13 @@ export default {
     name: 'MapContainer',
     components: {},
     props: {},
+    data: () => ({
+        //api endpoint
+        center: [30.6409619, 36.9359715]
+    }),
     methods: {
 
-        createCoordinat(models) {
+        async createCoordinat(models) {
             this.data = {
                 type: 'Feature',
                 properties: {},
@@ -64,14 +58,14 @@ export default {
                 this.data.geometry.coordinates[0].push(coord)
             })
 
-            return this.data
+            return await this.data
 
         },
 
         async getCoordinat() {
             const response = await fetch(`${api}/geolocation`)
             const models = await response.json()
-            return this.createCoordinat(models)
+            return await this.createCoordinat(models)
         },
         async createMap() {
             let data = await this.getCoordinat()
@@ -89,6 +83,7 @@ export default {
                     features: [feature],
                 }),
             })
+
             // this is where we create the OpenLayers map
             new Map({
                 // the map will be created using the 'map-root' ref
@@ -104,15 +99,15 @@ export default {
 
                 // the map view will initially show the whole world
                 view: new View({
-                    zoom: 3,
+                    zoom: 7,
                     center: this.center,
                     constrainResolution: true
                 }),
             })
         }
     },
-    mounted() {
-        this.createMap()
+    async mounted() {
+        await this.createMap()
     },
 }
 </script>
