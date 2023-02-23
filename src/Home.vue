@@ -247,7 +247,7 @@ export default {
     },
     async setPostion(position) {
 
-      this.geolocation = {
+      const coords = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         accuracy: position.coords.accuracy,
@@ -259,7 +259,7 @@ export default {
       }
 
       // create geolocation
-      this.geolocation = await this.create(`${this.a.geolocation}/create`, position)
+      this.geolocation = await this.create(`${this.a.geolocation}/create`, coords)
 
       this.processL = true
       // process protection 
