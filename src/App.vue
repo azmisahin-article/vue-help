@@ -50,7 +50,7 @@
                 <span class="badge bg-secondary" title="total participants" v-html="count(rvp.participants)"></span>
                 <a v-on:click="selectedRVP(rvp)" href="#" data-bs-toggle="modal" data-bs-target="#modal"
                   title="be volunteer">
-                  <img src="assets/logo.png" width="32" alt="volunteer">
+                  <img src="./assets/logo.png" width="32" alt="volunteer">
                 </a>
               </td>
               <td v-html="rvp.typeOfNeed"></td>
@@ -68,7 +68,7 @@
 
       <div v-show="processR" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-          <img src="assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
+          <img src="./assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
           <strong class="me-auto">New Request</strong>
           <small class="text-muted">5 sec ago</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -80,7 +80,7 @@
 
       <div v-show="processV" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-          <img src="assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
+          <img src="./assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
           <strong class="me-auto">New volunteer</strong>
           <small class="text-muted">11 mins ago</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -92,7 +92,7 @@
 
       <div v-show="processL" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-          <img src="assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
+          <img src="./assets/logo.png" class="bd-placeholder-img rounded me-2" width="20" />
           <strong class="me-auto">Location update {{ geolocation.error }}</strong>
           <small class="text-muted">{{ geolocation.speed }}</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -143,7 +143,7 @@
             </div>
             <div class="modal-footer">
               <button :disabled="processV" type="submit" data-bs-dismiss="modal" class="btn btn-outline-success">
-                <img src="assets/logo.png" width="20" />
+                <img src="./assets/logo.png" width="20" />
                 <span>Send</span>
               </button>
             </div>
