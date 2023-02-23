@@ -1,10 +1,27 @@
 <template>
-    <div id="map" class="w-100" ref="map-root">
+    <div id="map" class="w-100" ref="map-root" style="width: max-content;">
     </div>
 </template>
 
 <style>
-#map {
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    height: 100%;
+    width: 100vh;
+    display: grid;
+    grid-template-columns: 100vh;
+    grid-auto-rows: 1fr;
+    grid-gap: 1rem;
+
+    box-sizing: border-box;
+
     width: 100%;
     height: 100%;
     min-width: 100vh;
@@ -13,7 +30,7 @@
 </style>
   
 <script>
-
+import { transform } from 'ol/proj'
 import View from 'ol/View'
 import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
@@ -35,7 +52,7 @@ export default {
     props: {},
     data: () => ({
         //api endpoint
-        center: [30.6409619, 36.9359715]
+        center: [30, 36]
     }),
     methods: {
 
@@ -99,8 +116,8 @@ export default {
 
                 // the map view will initially show the whole world
                 view: new View({
-                    zoom: 7,
-                    center: this.center,
+                    zoom: 14,
+                    center: transform(this.center, 'EPSG:4326', 'EPSG:3857'),
                     constrainResolution: true
                 }),
             })
