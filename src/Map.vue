@@ -57,8 +57,8 @@ export default {
                 }
             };
             models.forEach((item) => {
-                let longitude = item.geolocation.longitude || 0.0
-                let latitude = item.geolocation.latitude || 0.0
+                let longitude = item.longitude || 0.0
+                let latitude = item.latitude || 0.0
                 this.center = [longitude, latitude]
                 var coord = [longitude, latitude]
                 this.data.geometry.coordinates[0].push(coord)
@@ -69,7 +69,7 @@ export default {
         },
 
         async getCoordinat() {
-            const response = await fetch(api)
+            const response = await fetch(`${api}/geolocation`)
             const models = await response.json()
             return this.createCoordinat(models)
         },
