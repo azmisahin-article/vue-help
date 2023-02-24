@@ -80,7 +80,7 @@ export default {
         },
         async createMap() {
             let data = await this.getCoordinat()
-console.log(data)
+            console.log(data)
             // a feature (geospatial object) is created from the GeoJSON
             this.feature = new GeoJSON().readFeature(data, {
                 // this is required since GeoJSON uses latitude/longitude,
@@ -93,6 +93,11 @@ console.log(data)
                 source: new VectorSource({
                     features: [this.feature],
                 }),
+                style: {
+                    'fill-color': 'rgba(255, 0, 0, 0.3)',
+                    'stroke-color': 'rgba(255, 0, 0, 0.9)',
+                    'stroke-width': 0.5,
+                },
             })
 
             // this is where we create the OpenLayers map
