@@ -94,7 +94,7 @@ export default {
                     features: [this.feature],
                 }),
                 style: {
-                    'fill-color': 'rgba(255, 0, 0, 0.3)',
+                    'fill-color': 'rgba(33, 150, 243, 0.8)',
                     'stroke-color': 'rgba(255, 0, 0, 0.9)',
                     'stroke-width': 0.5,
                 },
