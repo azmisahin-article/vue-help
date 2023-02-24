@@ -43,7 +43,17 @@ export default {
         async createCoordinat(models) {
             this.data = {
                 type: 'Feature',
-                properties: {},
+                properties: {
+                    "geometryId": "0",
+                    // optional properties
+                    "name": "road",
+                    // Optional properties
+                    "stroke": "#0facf0",
+                    "stroke-width": 0.5,
+                    "stroke-opacity": 0.5,
+                    "fill": "#cbe0e1",
+                    "fill-opacity": 0.5,
+                },
                 geometry: {
                     type: 'Polygon',
                     coordinates: [
@@ -72,7 +82,7 @@ export default {
             let data = await this.getCoordinat()
 
             // a feature (geospatial object) is created from the GeoJSON
-            const feature = new GeoJSON().readFeature(data, {
+            this.feature = new GeoJSON().readFeature(data, {
                 // this is required since GeoJSON uses latitude/longitude,
                 // but the map is rendered using “Web Mercator”
                 featureProjection: 'EPSG:3857'
@@ -81,7 +91,7 @@ export default {
             // a new vector layer is created with the feature
             const vectorLayer = new VectorLayer({
                 source: new VectorSource({
-                    features: [feature],
+                    features: [this.feature],
                 }),
             })
 
