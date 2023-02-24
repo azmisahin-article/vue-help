@@ -51,7 +51,7 @@ export default {
                     "stroke": "#0facf0",
                     "stroke-width": 0.5,
                     "stroke-opacity": 0.5,
-                    "fill": "#cbe0e1",
+                    "fill": "#f44336",
                     "fill-opacity": 0.5,
                 },
                 geometry: {
@@ -80,7 +80,7 @@ export default {
         },
         async createMap() {
             let data = await this.getCoordinat()
-
+console.log(data)
             // a feature (geospatial object) is created from the GeoJSON
             this.feature = new GeoJSON().readFeature(data, {
                 // this is required since GeoJSON uses latitude/longitude,
