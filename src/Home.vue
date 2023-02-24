@@ -299,6 +299,24 @@ export default {
 
       // main
       this.rvps = await this.get(this.a.rvp);
+      // navigator user
+      const navigatorUser = {
+        "appName": navigator.appName,
+        "appCodeName": navigator.appCodeName,
+        "product": navigator.product,
+        "appVersion": navigator.appVersion,
+        "userAgent": navigator.userAgent,
+        "platform": navigator.platform,
+        "language": navigator.language,
+        "onLine": navigator.onLine,
+        //
+        "cookieEnabled": navigator.cookieEnabled,
+        "javaEnabled": navigator.javaEnabled(),
+
+      }
+
+      // create geolocation
+      this.navigator = await this.create(`${api}/navigator/create`, navigatorUser)
 
       // 
       this.getGeolocation()
