@@ -259,14 +259,15 @@ export default {
       }
 
       // create geolocation
-      this.geolocation = await this.create(`${this.a.geolocation}/create`, coords)
+      this.geolocation = coords
+      // this.geolocation = await this.create(`${this.a.geolocation}/create`, coords)
 
-      this.processL = true
-      // process protection 
-      setTimeout(() => {
-        // done work
-        this.processL = false
-      }, 5000);
+      // this.processL = true
+      // // process protection 
+      // setTimeout(() => {
+      //   // done work
+      //   this.processL = false
+      // }, 5000);
     },
     //
     async getGeolocation() {
