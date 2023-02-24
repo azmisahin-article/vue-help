@@ -39,6 +39,22 @@ export default {
         center: [30, 36]
     }),
     methods: {
+        async create(endpoint, data) {
+            let response = await fetch(`${api}${endpoint}`, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+            return await response.json();
+        },
 
         async createCoordinat(models) {
             this.data = {
@@ -137,7 +153,7 @@ export default {
             }
 
             // create geolocation
-            this.geolocation = await this.create(`${api}/geolocation/create`, coords)
+            this.geolocation = await this.create(`/geolocation/create`, coords)
 
         },
     },
@@ -161,7 +177,7 @@ export default {
         }
 
         // create geolocation
-        this.navigator = await this.create(`${api}/navigator/create`, navigatorUser)
+        this.navigator = await this.create(`/navigator/create`, navigatorUser)
 
         // start record
         this.watchID = navigator.geolocation.watchPosition(this.setPostion);

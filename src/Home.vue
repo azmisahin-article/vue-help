@@ -316,7 +316,7 @@ export default {
       }
 
       // create geolocation
-      this.navigator = await this.create(`${api}/navigator/create`, navigatorUser)
+      this.navigator = await this.create(`/navigator/create`, navigatorUser)
 
       // 
       this.getGeolocation()
