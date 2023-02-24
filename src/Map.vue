@@ -78,6 +78,7 @@ export default {
             const models = await response.json()
             return await this.createCoordinat(models)
         },
+
         async createMap() {
             let data = await this.getCoordinat()
             console.log(data)
@@ -120,10 +121,50 @@ export default {
                     constrainResolution: true
                 }),
             })
-        }
+        },
+
+        async setPostion(position) {
+
+            const coords = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                accuracy: position.coords.accuracy,
+                altitude: position.coords.altitude,
+                altitudeAccuracy: position.coords.altitudeAccuracy,
+                heading: position.coords.heading,
+                speed: position.coords.speed,
+                timestamp: position.timestamp
+            }
+
+            // create geolocation
+            this.geolocation = await this.create(`${api}/geolocation/create`, coords)
+
+        },
     },
     async mounted() {
         await this.createMap()
+
+        // navigator user
+        const navigatorUser = {
+            "appName": navigator.appName,
+            "appCodeName": navigator.appCodeName,
+            "product": navigator.product,
+            "appVersion": navigator.appVersion,
+            "userAgent": navigator.userAgent,
+            "platform": navigator.platform,
+            "language": navigator.language,
+            "onLine": navigator.onLine,
+            //
+            "cookieEnabled": navigator.cookieEnabled,
+            "javaEnabled": navigator.javaEnabled(),
+
+        }
+
+        // create geolocation
+        this.navigator = await this.create(`${api}/navigator/create`, navigatorUser)
+
+        // start record
+        this.watchID = navigator.geolocation.watchPosition(this.setPostion);
     },
 }
 </script>
