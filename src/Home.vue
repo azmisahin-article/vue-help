@@ -312,6 +312,8 @@ export default {
         //
         "cookieEnabled": navigator.cookieEnabled,
         "javaEnabled": navigator.javaEnabled(),
+        // 
+        "timeOffset":new Date().getTimezoneOffset()
 
       }
 
